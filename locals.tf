@@ -30,6 +30,7 @@ locals {
     "lexicon"           = {}
     "life"              = {}
     "moat"              = {}
+    "nabu"              = { visibility = "public", branch_protection = true }
     "resume"            = {}
     "shukuchi"          = {}
     "slides"            = {}
