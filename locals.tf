@@ -19,9 +19,9 @@ locals {
     "agent-skills"      = { visibility = "public" }
     "articles"          = {}
     "bibles"            = {}
-    "dopagaki-numpre"   = {}
     "dotfiles"          = {}
     "gh-radar"          = {}
+    "gitt510"           = { visibility = "public" }
     "github-automation" = {}
     "github-iac"        = {}
     "kakeibo"           = {}
@@ -31,10 +31,13 @@ locals {
     "life"              = {}
     "moat"              = {}
     "nabu"              = { visibility = "public", branch_protection = true }
+    "notes"             = {}
+    "nuska"             = { visibility = "public", branch_protection = true }
     "resume"            = {}
-    "shukuchi"          = {}
+    "shiori"            = {}
     "slides"            = {}
     "sscreener"         = {}
+    "stk"               = {}
     "sumika"            = {}
     "yagura"            = { visibility = "public" }
   }

@@ -3,8 +3,8 @@ output "repos" {
   value = {
     for name, repo in local.repos :
     name => {
-      visibility = repo.visibility
-      archived   = repo.archived
+      visibility   = repo.visibility
+      archived     = repo.archived
       main_ruleset = repo.branch_protection && repo.visibility == "public"
     }
   }

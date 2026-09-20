@@ -1,12 +1,16 @@
-# One-time imports of pre-existing resources. Safe to keep; applied imports
-# become no-ops. Remove once every resource is in state.
+# One-time imports of pre-existing resources. Applied imports become no-ops;
+# remove an entry once it is in state.
 import {
-  for_each = local.repos
-  to       = github_repository.this[each.key]
-  id       = each.key
+  to = github_repository.this["gitt510"]
+  id = "gitt510"
 }
 
 import {
-  to = github_repository_ruleset.main["kura"]
-  id = "kura:20100094"
+  to = github_repository.this["notes"]
+  id = "notes"
+}
+
+import {
+  to = github_repository.this["shiori"]
+  id = "shiori"
 }
