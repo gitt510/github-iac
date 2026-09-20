@@ -2,8 +2,8 @@ resource "github_repository" "this" {
   for_each = local.repos
 
   name       = each.key
-  visibility = each.value.visibility
-  archived   = each.value.archived
+  visibility = "public"
+  archived   = false
 
   # Deleting from locals archives the repo instead of destroying it.
   archive_on_destroy = true
@@ -38,12 +38,11 @@ resource "github_repository" "this" {
   }
 }
 
-# Main-branch ruleset, public repos only (free-plan restriction on private).
 resource "github_repository_ruleset" "main" {
   for_each = {
     for name, repo in local.repos :
     name => repo
-    if repo.branch_protection && repo.visibility == "public"
+    if repo.branch_protection
   }
 
   name        = "main"
