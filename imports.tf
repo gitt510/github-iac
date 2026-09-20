@@ -4,13 +4,3 @@ import {
   to = github_repository.this["gitt510"]
   id = "gitt510"
 }
-
-import {
-  to = github_repository.this["notes"]
-  id = "notes"
-}
-
-import {
-  to = github_repository.this["shiori"]
-  id = "shiori"
-}

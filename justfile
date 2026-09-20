@@ -24,4 +24,4 @@ check:
 
 # Show the declared repository ledger as a table
 show:
-    @{{tf}} output -json repos | jq -r '["REPO", "VISIBILITY", "MAIN_RULESET", "ARCHIVED"], (to_entries | sort_by(.key)[] | [.key, .value.visibility, (.value.main_ruleset | tostring), (.value.archived | tostring)]) | @tsv' | column -t | awk 'NR==1 {print "\033[1m" $0 "\033[0m"; next} {gsub(/public/, "\033[32m&\033[0m"); gsub(/private/, "\033[2m&\033[0m"); gsub(/true/, "\033[33m&\033[0m"); gsub(/false/, "\033[2m&\033[0m"); print}'
+    @{{tf}} output -json repos | jq -r '["REPO", "MAIN_RULESET"], (to_entries | sort_by(.key)[] | [.key, (.value.main_ruleset | tostring)]) | @tsv' | column -t
