@@ -6,9 +6,7 @@ Declares every public repository of the `gitt510` account in Terraform and appli
 
 - after `just apply`, the public repositories of `gitt510` are exactly the ones listed in `locals.tf`
 - a repository removed from the list is archived on GitHub, not deleted
-- description, topics, merge options and other settings edited in the GitHub UI survive `just apply`
-- a repository listed with `branch_protection = true` rejects direct pushes, force pushes and deletion on its default branch; changes land through a pull request, and `status_checks` names the checks that must pass first
-- private repositories are unchanged by `just apply`
+- settings edited in the GitHub UI other than name, visibility and archived state survive `just apply`
 
 ## Stack
 
