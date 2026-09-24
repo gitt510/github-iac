@@ -4,12 +4,11 @@ Declares every public repository of the `gitt510` account in Terraform and appli
 
 ## Behavior
 
-- a repository is public when, and only when, it is listed in `repo_overrides` in `locals.tf`
-- removing a repository from the list archives it on GitHub; nothing is deleted
-- for each listed repository Terraform owns name, visibility and archived state; every other setting is left to the GitHub UI
-- a repository with `branch_protection = true` gets a `main` ruleset on its default branch: no deletion, no force push, linear history, changes land through a pull request
-- `status_checks` lists the check contexts that ruleset requires before merge
-- private repositories are not managed
+- after `just apply`, the public repositories of `gitt510` are exactly the ones listed in `locals.tf`
+- a repository removed from the list is archived on GitHub, not deleted
+- description, topics, merge options and other settings edited in the GitHub UI survive `just apply`
+- a repository listed with `branch_protection = true` rejects direct pushes, force pushes and deletion on its default branch; changes land through a pull request, and `status_checks` names the checks that must pass first
+- private repositories are unchanged by `just apply`
 
 ## Stack
 
