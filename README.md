@@ -31,9 +31,3 @@ just apply   # apply the declared settings
 just check   # terraform fmt -check + validate
 just show    # table of declared repositories and their main ruleset
 ```
-
-## Making a repository public
-
-1. add the repository to `repo_overrides` in `locals.tf`
-2. import it: `op run --env-file=op.env -- terraform import 'github_repository.this["<name>"]' <name>`
-3. `just plan`, then `just apply`
