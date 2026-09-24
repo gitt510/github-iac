@@ -12,9 +12,9 @@ Declares every public repository of the `gitt510` account in Terraform and appli
 
 | Layer | Tool |
 | --- | --- |
-| Configuration | Terraform 1.16 (mise), `integrations/github` provider 6.x |
+| Configuration | Terraform, `integrations/github` provider |
 | State | HCP Terraform, organization `gitt510`, workspace `github-iac` |
-| Secrets | 1Password via `op run`; nothing stored on disk |
+| Secrets | 1Password via `op run` |
 | Task runner | just |
 
 ## Requirements
