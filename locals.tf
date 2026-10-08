@@ -3,12 +3,12 @@
 # freely to be worth a plan cycle. Making a repository public starts by
 # adding it to this list.
 #
-#   branch_protection - create a main ruleset
-#   status_checks     - required status check contexts for the ruleset
+#   protect_main    - create the "main" ruleset: PRs only, no deletion, no force push, linear history
+#   required_checks - status check contexts the "checks" ruleset requires; none, no ruleset
 locals {
   repo_defaults = {
-    branch_protection = false
-    status_checks     = []
+    protect_main    = false
+    required_checks = []
   }
 
   repo_overrides = {
@@ -16,9 +16,9 @@ locals {
     "agent-skills" = {}
     "github-iac"   = {}
     "gitt510"      = {}
-    "kura"         = { branch_protection = true, status_checks = ["test"] }
-    "nabu"         = { branch_protection = true }
-    "nuska"        = { branch_protection = true }
+    "kura"         = { protect_main = true, required_checks = ["test"] }
+    "nabu"         = { protect_main = true }
+    "nuska"        = { protect_main = true }
     "yagura"       = {}
   }
 

@@ -24,4 +24,4 @@ check:
 
 # Show the declared repository ledger as a table
 show:
-    @{{tf}} output -json repos | jq -r '["REPO", "MAIN_RULESET"], (to_entries | sort_by(.key)[] | [.key, (.value.main_ruleset | tostring)]) | @tsv' | column -t
+    @{{tf}} output -json repos | jq -r '["REPO", "MAIN_RULESET", "REQUIRED_CHECKS"], (to_entries | sort_by(.key)[] | [.key, (.value.main_ruleset | tostring), (.value.required_checks | join(",") | if . == "" then "-" else . end)]) | @tsv' | column -t
