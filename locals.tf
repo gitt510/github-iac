@@ -14,7 +14,7 @@ locals {
   repo_overrides = {
     ".github"      = {}
     "agent-skills" = {}
-    "github-iac"   = {}
+    "github-iac"   = { protect_main = true }
     "gitt510"      = {}
     "kura"         = { protect_main = true, required_checks = ["test"] }
     "nabu"         = { protect_main = true }
