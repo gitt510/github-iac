@@ -29,5 +29,5 @@ just init    # providers + HCP Terraform backend
 just plan    # preview against GitHub
 just apply   # apply the declared settings
 just check   # terraform fmt -check + validate
-just show    # table of declared repositories and their main ruleset
+just show    # table of declared repositories, their main ruleset and required checks
 ```

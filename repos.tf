@@ -42,7 +42,7 @@ resource "github_repository_ruleset" "main" {
   for_each = {
     for name, repo in local.repos :
     name => repo
-    if repo.branch_protection
+    if repo.protect_main
   }
 
   name        = "main"
@@ -65,15 +65,36 @@ resource "github_repository_ruleset" "main" {
     pull_request {
       required_approving_review_count = 0
     }
+  }
+}
 
-    dynamic "required_status_checks" {
-      for_each = length(each.value.status_checks) > 0 ? [1] : []
-      content {
-        dynamic "required_check" {
-          for_each = each.value.status_checks
-          content {
-            context = required_check.value
-          }
+# Separate from "main" so requiring checks and protecting main stay
+# independent; GitHub applies every ruleset that targets the branch.
+resource "github_repository_ruleset" "checks" {
+  for_each = {
+    for name, repo in local.repos :
+    name => repo
+    if length(repo.required_checks) > 0
+  }
+
+  name        = "checks"
+  repository  = github_repository.this[each.key].name
+  target      = "branch"
+  enforcement = "active"
+
+  conditions {
+    ref_name {
+      include = ["~DEFAULT_BRANCH"]
+      exclude = []
+    }
+  }
+
+  rules {
+    required_status_checks {
+      dynamic "required_check" {
+        for_each = each.value.required_checks
+        content {
+          context = required_check.value
         }
       }
     }

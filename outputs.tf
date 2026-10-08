@@ -3,7 +3,8 @@ output "repos" {
   value = {
     for name, repo in local.repos :
     name => {
-      main_ruleset = repo.branch_protection
+      main_ruleset    = repo.protect_main
+      required_checks = repo.required_checks
     }
   }
 }
