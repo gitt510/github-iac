@@ -6,7 +6,8 @@ Declares every public repository of the `gitt510` account in Terraform and appli
 
 - after `just apply`, the public repositories of `gitt510` are exactly the ones listed in `locals.tf`
 - a repository removed from the list is archived on GitHub, not deleted
-- settings edited in the GitHub UI other than name, visibility and archived state survive `just apply`
+- a merged pull request's branch is deleted automatically
+- settings edited in the GitHub UI other than name, visibility, archived state and branch deletion on merge survive `just apply`
 
 ## Stack
 

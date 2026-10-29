@@ -5,12 +5,15 @@ resource "github_repository" "this" {
   visibility = "public"
   archived   = false
 
+  delete_branch_on_merge = true
+
   # Deleting from locals archives the repo instead of destroying it.
   archive_on_destroy = true
 
   lifecycle {
-    # Only name / visibility / archived are managed here. Everything else
-    # stays owned by the GitHub UI until it graduates into locals.
+    # Only name / visibility / archived / delete_branch_on_merge are managed
+    # here. Everything else stays owned by the GitHub UI until it graduates
+    # into locals.
     ignore_changes = [
       description,
       homepage_url,
@@ -25,7 +28,6 @@ resource "github_repository" "this" {
       allow_rebase_merge,
       allow_auto_merge,
       allow_update_branch,
-      delete_branch_on_merge,
       merge_commit_title,
       merge_commit_message,
       squash_merge_commit_title,
